@@ -71,3 +71,35 @@ LOAD DATA LOCAL INPATH '/home/cloudera/customer_data.txt'
 INTO TABLE customer
 PARTITION (country='USA', state='California');
 
+
+1)SELECT SUM(total_amount) AS total_sales FROM sales_order;
+2)SELECT p.product_name, SUM(s.total_amount) AS total_sales
+FROM sales_order s
+JOIN product p ON s.product_id = p.product_id
+GROUP BY p.product_name
+ORDER BY total_sales DESC
+LIMIT N;
+3)SELECT c.customer_name, SUM(s.total_amount) AS total_sales
+FROM sales_order s
+JOIN customer c ON s.customer_id = c.customer_id
+GROUP BY c.customer_name
+ORDER BY total_sales DESC;
+4)SELECT YEAR(order_date) AS year, MONTH(order_date) AS month, SUM(total_amount) AS
+total_sales
+FROM sales_order
+GROUP BY YEAR(order_date), MONTH(order_date)
+ORDER BY year, month;
+5)SELECT p.product_name, SUM(s.quantity) AS total_quantity
+FROM sales_order s
+JOIN product p ON s.product_id = p.product_id
+GROUP BY p.product_name
+ORDER BY total_quantity DESC;
+6)SELECT category, product_name, price
+FROM (
+ SELECT category, product_name, price,
+ ROW_NUMBER() OVER (PARTITION BY category ORDER BY price DESC) AS rank
+ FROM product
+) ranked_products
+WHERE rank = 1;
+
+
