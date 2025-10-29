@@ -1,13 +1,20 @@
+https://www.youtube.com/watch?v=BwYFuhVhshI&t=270s
+
 download kafka before 4.0 version
 config folder
+
 change server properties --- logs directory
+log.dirs=c:/kafka/kafka-logs
+
 zoo keeper properties ---- data directory
+dataDir=c:/kafka/zookeeper-data
+
 start cmd in kafka folder
 
 and run the following(to start the zookeeper server)
 .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
 now start kafka server
-.\bin\windows\kafka-server.start.bat .\config\server.properties
+.\bin\windows\kafka-server-start.bat .\config\server.properties
 
 now we have two cmds running zookeeper and then kafka server
 now we need to have producer and consumer
