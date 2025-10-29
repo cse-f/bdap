@@ -68,33 +68,60 @@ in csv in cloudera directly
 
 ALTER TABLE customer ADD PARTITION (country='India', state='Telangana');
 
-LOAD DATA LOCAL INPATH '/home/cloudera/customer_data.txt'
+LOAD DATA LOCAL INPATH '/home/cloudera/data.txt'
 INTO TABLE customer
 PARTITION (country='India', state='Telangana');
 
 
 1)SELECT SUM(total_amount) AS total_sales FROM sales_order;
+op:164000.0
+
 2)SELECT p.product_name, SUM(s.total_amount) AS total_sales
 FROM sales_order s
 JOIN product p ON s.product_id = p.product_id
 GROUP BY p.product_name
 ORDER BY total_sales DESC
 LIMIT N;
+op:
+Laptop Pro 15	81500.0
+Smartphone X2	43400.0
+Teak Coffee Table	19400.0
+Wireless Earbuds	10500.0
+Ergo Office Chair	9200.0
+
+
 3)SELECT c.customer_name, SUM(s.total_amount) AS total_sales
 FROM sales_order s
 JOIN customer c ON s.customer_id = c.customer_id
 GROUP BY c.customer_name
 ORDER BY total_sales DESC;
+op:
+Yashwanth Reddy	92000.0
+Ananya Sharma	43400.0
+Arjun Kumar	28600.0
+
+
 4)SELECT YEAR(order_date) AS year, MONTH(order_date) AS month, SUM(total_amount) AS
 total_sales
 FROM sales_order
 GROUP BY YEAR(order_date), MONTH(order_date)
 ORDER BY year, month;
+op:2024	3	164000.0
+
+
 5)SELECT p.product_name, SUM(s.quantity) AS total_quantity
 FROM sales_order s
 JOIN product p ON s.product_id = p.product_id
 GROUP BY p.product_name
 ORDER BY total_quantity DESC;
+op:
+Teak Coffee Table	3
+Wireless Earbuds	2
+Smartphone X2	1
+Laptop Pro 15	1
+Ergo Office Chair	1
+
+
 6)SELECT category, product_name, price
 FROM (
  SELECT category, product_name, price,
@@ -102,6 +129,10 @@ FROM (
  FROM product
 ) ranked_products
 WHERE rank = 1;
+op:
+Electronics	Laptop Pro 15	85000.0
+Furniture	Ergo Office Chair	9000.0
+
 
 create database if not exists second;
 use second;
