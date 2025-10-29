@@ -66,11 +66,11 @@ INSERT INTO TABLE sales_order VALUES
 in csv in cloudera directly
 
 
-ALTER TABLE customer ADD PARTITION (country='USA', state='California');
+ALTER TABLE customer ADD PARTITION (country='India', state='Telangana');
 
 LOAD DATA LOCAL INPATH '/home/cloudera/customer_data.txt'
 INTO TABLE customer
-PARTITION (country='USA', state='California');
+PARTITION (country='India', state='Telangana');
 
 
 1)SELECT SUM(total_amount) AS total_sales FROM sales_order;
