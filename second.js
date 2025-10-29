@@ -42,24 +42,25 @@ STORED AS TEXTFILE;
 
 
 INSERT INTO TABLE product VALUES
-(101, 'Laptop Pro 15', 'Electronics', 1500.00, 'TechBrand', '2024-01-10 10:00:00'),
-(102, 'Smartphone X', 'Electronics', 800.00, 'PhoneCorp', '2024-02-05 12:30:00'),
-(103, 'Wireless Headphones', 'Electronics', 200.00, 'SoundMax', '2024-03-12 09:15:00'),
-(104, 'Office Chair', 'Furniture', 250.00, 'FurniCo', '2024-01-20 14:00:00'),
-(105, 'Coffee Table', 'Furniture', 150.00, 'HomeStyle', '2024-02-18 11:00:00');
+(101, 'Laptop Pro 15', 'Electronics', 85000.00, 'TechNova', '2024-01-10 10:00:00'),
+(102, 'Smartphone X2', 'Electronics', 45000.00, 'InnovaMobiles', '2024-02-05 12:30:00'),
+(103, 'Wireless Earbuds', 'Electronics', 5000.00, 'SoundBliss', '2024-03-12 09:15:00'),
+(104, 'Ergo Office Chair', 'Furniture', 9000.00, 'FurniCraft', '2024-01-20 14:00:00'),
+(105, 'Teak Coffee Table', 'Furniture', 6500.00, 'WoodArt', '2024-02-18 11:00:00');
 
 
 INSERT INTO TABLE sales_order VALUES
-(301, 201, 101, '2024-03-01 10:00:00', 1500.00, 1, 100.00, 50.00, 1450.00),
-(302, 201, 103, '2024-03-05 12:30:00', 200.00, 2, 0.00, 20.00, 220.00),
-(303, 202, 102, '2024-03-07 14:00:00', 800.00, 1, 50.00, 40.00, 790.00),
-(304, 203, 104, '2024-03-10 16:15:00', 250.00, 1, 0.00, 25.00, 275.00),
-(305, 203, 105, '2024-03-12 11:00:00', 150.00, 3, 10.00, 15.00, 455.00);
+(301, 201, 101, '2024-03-01 10:00:00', 85000.00, 1, 5000.00, 1500.00, 81500.00),
+(302, 201, 103, '2024-03-05 12:30:00', 5000.00, 2, 0.00, 500.00, 10500.00),
+(303, 202, 102, '2024-03-07 14:00:00', 45000.00, 1, 2500.00, 900.00, 43400.00),
+(304, 203, 104, '2024-03-10 16:15:00', 9000.00, 1, 0.00, 200.00, 9200.00),
+(305, 203, 105, '2024-03-12 11:00:00', 6500.00, 3, 500.00, 300.00, 19400.00);
 
 
-201,Alice Johnson,alice@example.com,555-1234,123 Maple St|Los Angeles|CA|90001,2023-12-01 10:00:00
-202,Bob Smith,bob@example.com,555-5678,456 Oak Ave|San Francisco|CA|94102,2023-12-15 09:30:00
-203,Charlie Lee,charlie@example.com,555-8765,789 Pine Rd|San Diego|CA|92103,2024-01-05 11:15:00
+201,Yashwanth Reddy,yashwanth@example.com,9876543210,12-3-45 Banjara Hills|Hyderabad|Telangana|500034,2023-12-01 10:00:00
+202,Ananya Sharma,ananya@example.com,9123456780,8-2-123 Jubilee Hills|Hyderabad|Telangana|500033,2023-12-15 09:30:00
+203,Arjun Kumar,arjun@example.com,9988776655,5-6-789 Hanamkonda|Warangal|Telangana|506001,2024-01-05 11:15:00
+
 
 
 in csv in cloudera directly
