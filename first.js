@@ -38,6 +38,8 @@ conf = SparkConf().setAppName("SocketKafkaForwardConsumer").setMaster("local[2]"
 sc = SparkContext(conf=conf)
 ssc = StreamingContext(sc, 2)  # 2-second batch interval
 
+sc.setLogLevel("WARN")
+
 lines = ssc.socketTextStream("127.0.0.1", 9999)
 
 def process(rdd):
@@ -53,6 +55,7 @@ lines.foreachRDD(process)
 
 ssc.start()
 ssc.awaitTermination()
+
 
 ctrl+o enter ctrl+x
 
