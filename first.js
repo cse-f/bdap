@@ -45,11 +45,11 @@ lines = ssc.socketTextStream("127.0.0.1", 9999)
 def process(rdd):
     count = rdd.count()
     if count > 0:
-	print("Received %d records in this batch" % count)
-	for i, record in enumerate(rdd.take(10), start=1):
-		print("[{0}] {1}".format(i, record))
+		print("Received %d records in this batch" % count)
+		for i, record in enumerate(rdd.take(10), start=1):
+			print("[{0}] {1}".format(i, record))
     else:
-	print("No records in this batch")
+		print("No records in this batch")
 
 lines.foreachRDD(process)
 
