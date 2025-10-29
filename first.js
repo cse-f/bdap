@@ -1,3 +1,10 @@
+kafka-server
+create,list
+producer
+program
+consumer
+
+
 wget --no-check-certificate https://archive.apache.org/dist/kafka/0.8.2.2/kafka_2.10-0.8.2.2.tgz
 tar -xzf kafka_2.10-0.8.2.2.tgz
 sudo mv kafka_2.10-0.8.2.2 /usr/lib/kafka
@@ -31,16 +38,16 @@ conf = SparkConf().setAppName("SocketKafkaForwardConsumer").setMaster("local[2]"
 sc = SparkContext(conf=conf)
 ssc = StreamingContext(sc, 2)  # 2-second batch interval
 
-lines = ssc.socketTextStream("localhost", 9999)
+lines = ssc.socketTextStream("127.0.0.1", 9999)
 
 def process(rdd):
     count = rdd.count()
     if count > 0:
-        print(f"Received {count} records in this batch")
-        for i, record in enumerate(rdd.take(10), start=1):
-            print(f"[{i}] {record}")
+	print("Received %d records in this batch" % count)
+	for i, record in enumerate(rdd.take(10), start=1):
+		print("[{0}] {1}".format(i, record))
     else:
-        print("No records in this batch")
+	print("No records in this batch")
 
 lines.foreachRDD(process)
 
@@ -58,5 +65,17 @@ ls bin ----you should able to see spark-submit
 bin/spark-submit --master local[2] /home/cloudera/spark_socket_consumer.py
 
 
+reset
+first listen(socket server) then start the consumer to send the data back
+nc -lk 9999
+to listen
+
+nc localhost 9999
+to send
+
+
+to test first nc -lk 
+then start socket
+and enter anything in nc -lk terminal
 
 
