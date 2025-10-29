@@ -102,4 +102,8 @@ FROM (
 ) ranked_products
 WHERE rank = 1;
 
-
+create database if not exists second;
+use second;
+select current_database();
+show databases();
+drop database if exists second;
