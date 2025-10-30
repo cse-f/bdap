@@ -1,3 +1,4 @@
+check zookeeper is running or not in 2181
 kafka-server
 create,list
 producer
@@ -24,9 +25,6 @@ bin/kafka-topics.sh --list --zookeeper localhost:2181
 
 producer
 bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test-topic
-consumer
-bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic test-topic --from-beginning
-bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic test-topic --from-beginning | nc -lk 9999
 
 in home/cloudera
 nano spark_socket_consumer.py
@@ -66,6 +64,10 @@ cd spark
 ls bin ----you should able to see spark-submit
 
 bin/spark-submit --master local[2] /home/cloudera/spark_socket_consumer.py
+
+consumer
+bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic test-topic --from-beginning
+bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic test-topic --from-beginning | nc -lk 9999
 
 
 reset
